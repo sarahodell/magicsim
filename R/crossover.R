@@ -26,18 +26,15 @@ crossover<-function(parent,recomb,c){
   }
   start=1
   for(p in sort(xo_pos)){
-    print(p)
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors
     if((p < donor1$breakpoints[1]) & (p < donor2$breakpoints[1])){
-      print(1)
       recomb_pos=c(p,donor2$breakpoints)
       recomb_donor=c(donor1$donors[1],donor2$donors)
     }
     #If the new break is less than previous breakpoints in donor1
     #but not in donor2
     else if((p < donor1$breakpoints[1]) & (p > donor2$breakpoints[1])){
-      print(2)
       d2_upper=donor2$breakpoints[donor2$breakpoints-p>0]
       d2_index=which(min(d2_upper)==donor2$breakpoints)
       # New breakpoints are p and all breakpoints from donor2 greater than p
@@ -48,7 +45,6 @@ crossover<-function(parent,recomb,c){
     #but not in donor1
     # Or both have breakpoints before p
     else{
-      print(3)
       d1_lower=donor1$breakpoints[p-donor1$breakpoints>0]
       d2_upper=donor2$breakpoints[donor2$breakpoints-p>0]
       d2_index=which(min(d2_upper)==donor2$breakpoints)
