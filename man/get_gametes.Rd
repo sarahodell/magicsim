@@ -13,6 +13,9 @@ get_gametes(parent, recomb, c)
 
 \item{c}{Chromosome number}
 }
+\value{
+One chromosome object
+}
 \description{
 Generates a gamete randomly from one of the two chromosomes, with 50% chance of crossing over
 }

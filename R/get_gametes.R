@@ -3,7 +3,7 @@
 #' @param recomb dataframe of genetic and physical map for chrom c
 #' @param c Chromosome number
 #'
-#' @returns One chromosome object
+#' @return One chromosome object
 
 get_gametes<-function(parent,recomb,c){
   event=sample(c(1,2,3),1)
