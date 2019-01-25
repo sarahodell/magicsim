@@ -1,4 +1,4 @@
-#' Generates a gamete randomly from one of the two chromosomes, with 50% chance of crossing over
+#' Generates a gamete randomly from one of the two chromosomes, with 50 percent chance of crossing over
 #' @param parent list object in format created from chrom_init
 #' @param recomb dataframe of genetic and physical map for chrom c
 #' @param c Chromosome number
