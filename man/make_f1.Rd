@@ -4,12 +4,14 @@
 \alias{make_f1}
 \title{Create an F1 from two parents}
 \usage{
-make_f1(p1, p2, c = 10)
+make_f1(p1, p2, map, c = 10)
 }
 \arguments{
 \item{p1}{The first parents to cross. A chromosome object created by chrom_init()}
 
 \item{p2}{The second parent to cross. A chromosome object created by chrom_init()}
+
+\item{map}{Dataframe with physical and genetic positions for chromosome trying to be simulated. Of format chr,physical_position,gentic_position}
 
 \item{c}{chromsome number (default is 10)}
 }
