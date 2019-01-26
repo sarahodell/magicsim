@@ -5,6 +5,7 @@
 #' @param c The chromosome being simulated
 #' @return A synthetic population of the same size as the initial population, pop that
 #' has been randomly outcrossed for ngen generations (list of lists)
+#' @export
 
 outcross<-function(pop,ngen,c){
   size=length(pop)

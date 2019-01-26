@@ -4,6 +4,7 @@
 #' @param c Chromosome number
 #'
 #' @return One chromosome object
+#' @export
 
 get_gametes<-function(parent,recomb,c){
   event=sample(c(1,2,3),1)

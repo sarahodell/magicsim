@@ -4,6 +4,7 @@
 #' and listed in the order that crossing should occur
 #' @param c Chromosome number (default is 10)
 #' @return A list of chromosome objects that are a result of funnel crossing the lines in start_pop
+#' @export
 
 
 make_magic<-function(start_pop,c=10){

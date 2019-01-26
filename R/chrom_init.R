@@ -10,6 +10,7 @@
 #' each containing vectors of breakpoint locations and donor names
 #' @examples
 #' chrom_init(10)
+#' @export
 
 chrom_init <- function(c=10,map,h1_breakpoints=NULL,h1_donors=c('A'),h2_breakpoints=NULL,h2_donors=c('A')){
   chrom_end=max(map[map$chr==c,]$pos)

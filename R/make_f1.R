@@ -5,6 +5,7 @@
 #' @param map Dataframe with physical and genetic positions for chromosome trying to be simulated. Of format chr,physical_position,gentic_position
 #' @param c chromsome number (default is 10)
 #' @return A chromosome object with one chromosme pulled from both of the parents
+#' @export
 
 make_f1 <- function(p1,p2,map,c=10){
   if(runif(1)>=0.5){

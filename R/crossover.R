@@ -4,6 +4,7 @@
 #' @param c The chromosome being simulated
 #'
 #' @return a list object of one recombinant chromosome
+#' @export
 
 crossover<-function(parent,recomb,c){
   interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos))

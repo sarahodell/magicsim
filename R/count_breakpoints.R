@@ -3,6 +3,7 @@
 #' @param ind An chromosome object
 #' @param hom Whether the indvidual is homozygous or not. Default is FALSE. If true, the number of breakpoints for only one of the chromosomes will be given
 #' @return The number of breakpoints in an individual. If hom is F, then it will return a vector of breakpoints on the two chromsomes, otherwise just one value will be given
+#' @export
 
 count_breakpoints<-function(ind,hom=F){
   if(hom){

@@ -5,6 +5,7 @@
 #' @param chroms List of chromosomes, or one chromosome
 #'
 #' @return A chromosome object that is the combination of two the two parents with potential crossing over
+#' @export
 
 offspring<-function(p1,p2,chroms){
   offspring=list()

@@ -2,6 +2,7 @@
 #' only keep one of the crossover locations
 #' @param xo_pos crossover position (int)
 #' @param dist physical distance below which interference occurs (default is 10e6 bp)
+#' @export
 
 
 interference <- function(xo_pos,dist=10e6){
