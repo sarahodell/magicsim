@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_gametes.R
 \name{get_gametes}
 \alias{get_gametes}
-\title{Generates a gamete randomly from one of the two chromosomes, with 50% chance of crossing over}
+\title{Generates a gamete randomly from one of the two chromosomes, with 50 percent chance of crossing over}
 \usage{
 get_gametes(parent, recomb, c)
 }
@@ -17,5 +17,5 @@ get_gametes(parent, recomb, c)
 One chromosome object
 }
 \description{
-Generates a gamete randomly from one of the two chromosomes, with 50% chance of crossing over
+Generates a gamete randomly from one of the two chromosomes, with 50 percent chance of crossing over
 }
