@@ -4,14 +4,18 @@
 \alias{crossover}
 \title{Simulate a crossover between homologous chromosomes of a parent}
 \usage{
-crossover(parent, recomb, c)
+crossover(xo, donor1, donor2, recomb, c, nu = 12)
 }
 \arguments{
-\item{parent}{list object in format created from chrom_init}
+\item{xo}{the number of crossovers}
 
 \item{recomb}{dataframe of genetic and physical map for chrom c}
 
 \item{c}{The chromosome being simulated}
+
+\item{nu}{Interference intensity (optional: Default 12)}
+
+\item{parent}{list object in format created from chrom_init}
 }
 \value{
 a list object of one recombinant chromosome
