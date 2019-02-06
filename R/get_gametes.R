@@ -7,15 +7,23 @@
 #' @export
 
 get_gametes<-function(parent,recomb,c){
-  event=sample(c(1,2,3),1)
-  if(event==1){
-    result=parent$h1
-  }
-  else if(event==2){
-    result=parent$h2
+  gametes=c(parent$h1,parent$h1,parent$h2,parent$h2)
+  xo = rpois(1,max(recomb$scaled_cM)/100)
+  if(xo==0){
+    if(runif(1)<0.5){
+      result=parent$h1
+    }
+    else{
+      result=parent$h2
+    }
   }
   else{
-    result=crossover(parent,recomb,c)
+    if(runif(1)<0.5){
+      result=crossover(xo,parent$h2,parent$h1,recomb,c)
+    }
+    else{
+      result=crossover(xo,parent$h1,parent$h2,recomb,c)
+    }
   }
   return(result)
 }

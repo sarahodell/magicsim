@@ -5,12 +5,12 @@
 #' @export
 
 
-interference <- function(xo_pos,dist=10e6){
-  if(xo_pos[2]-xo_pos[1] < dist){
-    choice=sample(c(1,2))
-    return(xo_pos[choice])
+interference <- function(xo_pos,dist){
+  xo=length(xo_pos)
+  while(sum(diff(xo_pos) < dist) != 0){
+    closest=c(which.min(diff(xo_pos)),which.min(diff(xo_pos))+1)
+    choice=sample(closest,1)
+    return(xo_pos[-choice])
   }
-  else{
-    return(xo_pos)
-  }
+  return(xo_pos)
 }
