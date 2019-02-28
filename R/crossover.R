@@ -1,6 +1,7 @@
 #' Simulate a crossover between homologous chromosomes of a parent
 #' @param xo the number of crossovers
-#' @param parent list object in format created from chrom_init
+#' @param donor1 list object of one chromosome in format created from chrom_init, crossover starts with this one
+#' @param donor2 list object of one chromosome in format created from chrom_init
 #' @param recomb dataframe of genetic and physical map for chrom c
 #' @param c The chromosome being simulated
 #' @param nu Interference intensity (optional: Default 12)
@@ -17,6 +18,7 @@ crossover<-function(xo,donor1,donor2,recomb,c,nu=12){
     dist=max(recomb$pos)/nu #total length of chromosome divided by intereference intensity nu
     xo_pos=interference(xo_pos,dist)
   }
+  print(xo_pos)
   for(p in sort(xo_pos)){
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors
@@ -53,8 +55,9 @@ crossover<-function(xo,donor1,donor2,recomb,c,nu=12){
       }
 
     }
-    donor1=list(breakpoints=recomb_pos,donors=recomb_donor)
     donor2=donor1
+    donor1=list(breakpoints=recomb_pos,donors=recomb_donor)
+
   }
   return(list(breakpoints=recomb_pos,donors=recomb_donor))
 }

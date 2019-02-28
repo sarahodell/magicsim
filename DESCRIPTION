@@ -1,13 +1,15 @@
 Package: magicsim
-Title: What the Package Does (One Line, Title Case)
+Title: Simulations of Populations Involving Complex Crosses
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Sarah",
+           family = "Odell",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
+           email = "sgodell@ucdavis.edu")
 Description: What the package does (one paragraph).
-License: What license it uses
+License: CCO
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Suggests: knit, rmarkdown
+VignetteBuilder: knitr
