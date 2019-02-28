@@ -10,7 +10,7 @@
 
 make_magic<-function(start_pop,c=10,map){
   if(length(start_pop)==2){
-    return(offspring(start_pop[[1]],start_pop[[2]],c))
+    return(offspring(start_pop[[1]],start_pop[[2]],c,map))
   }
   magic=list()
   count=1
