@@ -18,5 +18,5 @@ make_magic<-function(start_pop,c=10,map){
     magic[[count]]=offspring(start_pop[[i]],start_pop[[i+1]],c,map)
     count=count+1
   }
-  return(make_magic(magic,c))
+  return(make_magic(magic,c,map))
 }

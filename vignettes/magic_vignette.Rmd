@@ -88,7 +88,7 @@ for(i in seq(1,length(founder_list),2)){
 Create synthetic population of 2000 lines from MAGIC founder funnel
 ```{r}
 magic_pop=list()
-for(x in seq(1,2000)){magic_pop[[x]]=make_magic(f1s,10,map)}
+for(x in seq(1,2000)){magic_pop[[x]]=make_magic(f1s,10,gmap)}
 ```
 
 ### Simulate Outcrossing
@@ -146,40 +146,11 @@ ggplot(crossovers,aes(x=total_xo)) + geom_histogram(bins=9,fill="darkgreen",colo
 ```
 
 
-Convert the dh_pop object into breakpoints file format
+Convert the dh_pop object into breakpoints dataframe
 ```{r}
 #This should be its own function
-breaks_file=c()
-for(i in seq(1,400)){
-  sample=sprintf('Sim%.0f',i)
-  chr=c
-  ind=dh_pop[[i]]$h1
-  first=ind$donors[1]
-  start=0
-  if(length(ind$breakpoints)==1){
-    line=c(sample,chr,start,ind$breakpoints,first,first)
-    breaks_file=rbind(breaks_file,line)
-  }
-  else if(length(unique(ind$donors))==1){
-    end_index=length(ind$breakpoints)
-    line=c(sample,chr,start,ind$breakpoints[end_index],first,first)
-    breaks_file=rbind(breaks_file,line)
-  }
-  else{
-    for(j in seq(1,length(ind$breakpoints))){
-      if(ind$donors[j]!=first){
-        line=c(sample,chr,start,ind$breakpoints[j],first,first)
-        breaks_file=rbind(breaks_file,line)
-        first=ind$donors[j]
-        start=ind$breakpoints[j]+1
-      }
-    }
-  }
-}
-breaks_file=as.data.frame(breaks_file)
-names(breaks_file)=c('sample','chr','start','end','donor1','donor2')
-
-fwrite(breaks_file,sprintf('MAGIC_DHSim_%s_breakpoints.txt',date),row.names =F,quote=F,sep='\t')
+breaktable=make_breaktable(dh_pop)
+head(breaktable)
 ```
 
 ### Visualization
