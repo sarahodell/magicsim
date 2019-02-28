@@ -4,13 +4,15 @@
 \alias{make_magic}
 \title{Creates a MAGIC population in funnel crossing scheme from lines in list object start_pop}
 \usage{
-make_magic(start_pop, c = 10)
+make_magic(start_pop, c = 10, map)
 }
 \arguments{
 \item{start_pop}{A list of chromosome objects from the starting lines of the MAGIC, should be an even number of lines
 and listed in the order that crossing should occur}
 
 \item{c}{Chromosome number (default is 10)}
+
+\item{map}{The genetic map}
 }
 \value{
 A list of chromosome objects that are a result of funnel crossing the lines in start_pop

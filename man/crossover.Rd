@@ -9,13 +9,15 @@ crossover(xo, donor1, donor2, recomb, c, nu = 12)
 \arguments{
 \item{xo}{the number of crossovers}
 
+\item{donor1}{list object of one chromosome in format created from chrom_init, crossover starts with this one}
+
+\item{donor2}{list object of one chromosome in format created from chrom_init}
+
 \item{recomb}{dataframe of genetic and physical map for chrom c}
 
 \item{c}{The chromosome being simulated}
 
 \item{nu}{Interference intensity (optional: Default 12)}
-
-\item{parent}{list object in format created from chrom_init}
 }
 \value{
 a list object of one recombinant chromosome

@@ -4,7 +4,7 @@
 \alias{offspring}
 \title{Generate offspring from a cross between two parents}
 \usage{
-offspring(p1, p2, chroms)
+offspring(p1, p2, chroms, map)
 }
 \arguments{
 \item{p1}{The first parents to cross. A chromosome object created by chrom_init()}
@@ -12,6 +12,8 @@ offspring(p1, p2, chroms)
 \item{p2}{The second parent to cross. A chromosome object created by chrom_init()}
 
 \item{chroms}{List of chromosomes, or one chromosome}
+
+\item{map}{The genetic map}
 }
 \value{
 A chromosome object that is the combination of two the two parents with potential crossing over
