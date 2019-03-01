@@ -17,7 +17,6 @@ crossover<-function(xo,donor1,donor2,recomb,c){
     #dist=max(recomb$scaled_cM)/100
     xo_pos=interference(xo_pos)
   }
-  #print(xo_pos)
   for(p in sort(xo_pos)){
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors

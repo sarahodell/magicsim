@@ -9,7 +9,7 @@
 #' @return a list object of one recombinant chromosome
 #' @export
 
-make_breaktable <- function(pop){
+make_breaktable <- function(pop,c=10){
   breaks_table=c()
   l=length(pop)
   for(i in seq(1,l)){

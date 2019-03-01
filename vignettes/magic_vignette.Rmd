@@ -138,9 +138,9 @@ total_xo=c()
 for(i in seq(1,400)){total_xo=c(total_xo,dh_pop[[i]]$xo_no)}
 
 crossovers=data.frame(ind=seq(1,400),xo_no=total_xo)
-ggplot(crossovers,aes(x=total_xo)) + geom_histogram(bins=9,fill="darkgreen",color="black") + theme_classic() +
+ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="black") + theme_classic() +
   ggtitle("Distribution of Crossovers in Simulation DH Population") + xlab("Crossover Number") + 
-  ylab("Frequency")
+  ylab("Frequency") + geom_vline(xintercept=mean(crossovers$xo_no))
 
 ```
 
