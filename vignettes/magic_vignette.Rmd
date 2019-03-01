@@ -33,7 +33,7 @@ library('magicsim')
 library("data.table")
 library("tidyverse")
 
-
+options(scipen=999)
 ```
 
 ### Initializing Founder lines
@@ -96,8 +96,7 @@ for(x in seq(1,2000)){magic_pop[[x]]=make_magic(f1s,10,gmap)}
 Random outcrossing within the synthetic population for 3 generations
 
 ```{r}
-synth_pop=outcross(magic_pop,3,10)
-
+synth_pop=outcross(magic_pop,3,10,gmap)
 ```
 
 ### Get Doubled Haploids

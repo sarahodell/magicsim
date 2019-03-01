@@ -4,19 +4,18 @@
 #' @param donor2 list object of one chromosome in format created from chrom_init
 #' @param recomb dataframe of genetic and physical map for chrom c
 #' @param c The chromosome being simulated
-#' @param nu Interference intensity (optional: Default 12)
 #'
 #' @return a list object of one recombinant chromosome
 #' @export
 
-crossover<-function(xo,donor1,donor2,recomb,c,nu=12){
+crossover<-function(xo,donor1,donor2,recomb,c){
   interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos))
   draw=runif(xo)
   xo_pos=round(interp(draw*max(recomb$scaled_cM)),0)
   xo_pos=sort(xo_pos)
   if(xo>=2){
-    dist=max(recomb$pos)/nu #total length of chromosome divided by intereference intensity nu
-    xo_pos=interference(xo_pos,dist)
+    #dist=max(recomb$scaled_cM)/100
+    xo_pos=interference(xo_pos)
   }
   #print(xo_pos)
   for(p in sort(xo_pos)){
