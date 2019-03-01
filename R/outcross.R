@@ -31,5 +31,5 @@ outcross<-function(pop,ngen,c,g_map){
     new_pop[[count]]=offspring(pop[[draw1]],pop[[draw2]],c,g_map)
     count=count+1
   }
-  return(outcross(new_pop,ngen-1,c))
+  return(outcross(new_pop,ngen-1,c,g_map))
 }
