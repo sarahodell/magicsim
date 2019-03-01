@@ -4,7 +4,7 @@
 \alias{outcross}
 \title{Function to outcross population for ngen generations}
 \usage{
-outcross(pop, ngen, c)
+outcross(pop, ngen, c, g_map)
 }
 \arguments{
 \item{pop}{Starting population, pop[[i]] is the output of function offspring (list of lists)}
@@ -12,6 +12,8 @@ outcross(pop, ngen, c)
 \item{ngen}{The number of generations of outcrossing}
 
 \item{c}{The chromosome being simulated}
+
+\item{g_map}{The genetic map}
 }
 \value{
 A synthetic population of the same size as the initial population, pop that
