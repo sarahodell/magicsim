@@ -2,26 +2,18 @@
 % Please edit documentation in R/make_breaktable.R
 \name{make_breaktable}
 \alias{make_breaktable}
-\title{Simulate a crossover between homologous chromosomes of a parent}
+\title{Create dataframe of breakpoint locations for simulated population}
 \usage{
-make_breaktable(pop)
+make_breaktable(pop, c = 10)
 }
 \arguments{
-\item{xo}{the number of crossovers}
-
-\item{donor1}{list object of one chromosome in format created from chrom_init, crossover starts with this one}
-
-\item{donor2}{list object of one chromosome in format created from chrom_init}
-
-\item{recomb}{dataframe of genetic and physical map for chrom c}
+\item{pop}{The population of simulated lines}
 
 \item{c}{The chromosome being simulated}
-
-\item{nu}{Interference intensity (optional: Default 12)}
 }
 \value{
-a list object of one recombinant chromosome
+a dataframe with a the parental donor and location of breakpoints
 }
 \description{
-Simulate a crossover between homologous chromosomes of a parent
+Create dataframe of breakpoint locations for simulated population
 }
