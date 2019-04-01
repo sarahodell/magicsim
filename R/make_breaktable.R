@@ -1,12 +1,8 @@
-#' Simulate a crossover between homologous chromosomes of a parent
-#' @param xo the number of crossovers
-#' @param donor1 list object of one chromosome in format created from chrom_init, crossover starts with this one
-#' @param donor2 list object of one chromosome in format created from chrom_init
-#' @param recomb dataframe of genetic and physical map for chrom c
+#' Create dataframe of breakpoint locations for simulated population
+#' @param pop The population of simulated lines
 #' @param c The chromosome being simulated
-#' @param nu Interference intensity (optional: Default 12)
 #'
-#' @return a list object of one recombinant chromosome
+#' @return a dataframe with a the parental donor and location of breakpoints
 #' @export
 
 make_breaktable <- function(pop,c=10){
