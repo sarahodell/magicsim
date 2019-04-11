@@ -32,6 +32,7 @@ devtools::install_github('sarahodell/magicsim',force = T)
 library('magicsim')
 library("data.table")
 library("tidyverse")
+library("ggplot2")
 
 options(scipen=999)
 ```
@@ -42,7 +43,7 @@ magicsim simulates recombination evens using a genetic map of the organism. In t
 
 The cross order specifies which founder lines where crossed in the first stage of the funnel scheme. (i.e. here EP1 and A632 were crossed first, as were OH43 and B73).
 
-We will do this for maize chromosome 10 only, although this can be done for any number of chromosomes.
+We will do this for maize chromosome 1 only, although this can be done for any number of chromosomes.
 ```{r}
 
 gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
@@ -57,14 +58,10 @@ cross_order=c(2,4,14,15,3,8,10,16,1,9,5,6,12,7,11,13)
 cross_info=founders[cross_order]
 
 
-### Simulate chromosome 10
-c=10
-### Initialize founder chromosomes for the 16 founders
-founder_list=list()
-for(p in seq(1,length(cross_info))){
-  founder_list[[p]]=list()
-  founder_list[[p]][[c]]=chrom_init(c,gmap,h1_donor=cross_info[p],h2_donor=cross_info[p])
-}
+### Simulate chromosome 1
+c=1
+### Initialize the 16 founders
+founderpop=pop_init(n=16,chroms=1,donors=cross_info,g_map=gmap,poptype="magic")
 ```
 
 ### Create the first round of F1s
@@ -73,30 +70,78 @@ Using the crossing order above and the simulated founder chromosomes, we can cre
 
 ```{r}
 ### Create F1s from the first round of crossing
-f1s=list()
-count=1
-for(i in seq(1,length(founder_list),2)){
-  f1=list()
-  for(x in seq(1,10)){f1[[x]]=make_f1(founder_list[[i]][[x]],founder_list[[i+1]][[x]],gmap,x)}
-  f1s[[count]]=f1
-  count=count+1
+#Create an empty Pop object
+f1s=Pop(nIndv=8,indvlist=vector("list",length=8))
+
+#Make F1s for each of the first crosses and add to the Pop object
+for(i in seq(1,8)){
+  f1s@indvlist[[i]]=make_f1(founderpop[i],founderpop[i+1],gmap,chroms=1)
 }
 
 ```
 
 ### Building a MAGIC Population.
-Create synthetic population of 2000 lines from MAGIC founder funnel
+
+
+Create synthetic population of 1000 lines from MAGIC founder funnel
 ```{r}
-magic_pop=list()
-for(x in seq(1,2000)){magic_pop[[x]]=make_magic(f1s,10,gmap)}
+magic_pop=make_magic_pop(start_pop=f1s,c=1,g_map=gmap,popsize=1000)
 ```
+
+Look at number of recombinations in magic f4 lines
+
+```{r}
+no=sapply(seq(1,1000),function(x) length(magic_pop[x][1]@h1@donors))
+#what is the distribution of xo_no in the population?
+total_xo=c()
+for(i in seq(1,1000)){total_xo=c(total_xo,magic_pop[i][1]@h1@xo_no)}
+
+crossovers=data.frame(ind=seq(1,1000),xo_no=total_xo)
+ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="black") + theme_classic() +
+  ggtitle("Distribution of Crossovers in Simulation MAGIC Population") + xlab("Crossover Number") + 
+  ylab("Frequency") + geom_vline(xintercept=mean(crossovers$xo_no))
+
+```
+
+What do they look like?
+Convert the Pop object to a breaktable to visualize crossovers. Here is one for just 10 of the lines. Can specify heterozygous or homozygous
+
+```{r}
+breaktable=make_breaktable(magic_pop,n=10,c=1,het=T)
+head(breaktable)
+```
+
+### Visualization
+
+Plotting some of the lines can be useful in seeing how representative the simulated lines are.
+```{r}
+plot_Pop(breaktable,n=10,c=1,het=T)
+# Plotting can be done as heterozygous or homozygous
+```
+
 
 ### Simulate Outcrossing
 
-Random outcrossing within the synthetic population for 3 generations
+Random outcrossing within the synthetic population of 1000 individuals for 3 generations
 
 ```{r}
-synth_pop=outcross(magic_pop,3,10,gmap)
+synth_pop=outcross(magic_pop,3,1,gmap)
+```
+
+Look at number of recombinations in synthetic 3 lines
+
+```{r}
+no=sapply(seq(1,1000),function(x) length(synth_pop[x][1]@h1@donors))
+
+#what is the distribution of xo_no in the population?
+total_xo=c()
+for(i in seq(1,1000)){total_xo=c(total_xo,synth_pop[i][1]@h1@xo_no)}
+
+crossovers=data.frame(ind=seq(1,1000),xo_no=total_xo)
+ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="black") + theme_classic() +
+  ggtitle("Distribution of Crossovers in Simulation Synth3 Population") + xlab("Crossover Number") + 
+  ylab("Frequency") + geom_vline(xintercept=mean(crossovers$xo_no))
+
 ```
 
 ### Get Doubled Haploids
@@ -105,37 +150,18 @@ Randomly select 400 lines from the synthetic population and
 then choose one of the chromosomes at random to duplicate
 
 ```{r}
-
-#randomly choose 400 out of the 2000
-draw=sample(seq(1,2000),400,replace=F)
-
-dh_pop=list()
-for(d in seq(1,400)){
-  line=draw[d]
-  # randomly choose one of the two chromosomes
-  if(runif(1)>0.5){
-    dh_pop[[d]]=list(chr=10,h1=synth_pop[[line]][[10]]$h1,h2=synth_pop[[line]][[10]]$h1)
-  }
-  else{
-    dh_pop[[d]]=list(chr=10,h1=synth_pop[[line]][[10]]$h2,h2=synth_pop[[line]][[10]]$h2)
-  }
-}
-
-# Can be saved as an R object
-#saveRDS(dh_pop,'MAGIC_DHSim.rds')
-
+#randomly choose 400 out of the 1000
+dh_pop=make_dh_pop(synth_pop,n=400,c=1,gmap)
 ```
 
 ### Assessing the simulated lines
 
 Looking at number of crossovers
 ```{r}
-no=sapply(seq(1,400),function(x) length(dh_pop[[x]]$h1$donors))
-#add the crossover count as xo_no to dh_pop
-for(i in seq(1,400)){dh_pop[[i]]$xo_no=count_breakpoints(dh_pop[[i]],hom=T)}
+no=sapply(seq(1,400),function(x) length(dh_pop[x][1]@h1@donors))
 #what is the distribution of xo_no in the population?
 total_xo=c()
-for(i in seq(1,400)){total_xo=c(total_xo,dh_pop[[i]]$xo_no)}
+for(i in seq(1,400)){total_xo=c(total_xo,dh_pop[i][1]@h1@xo_no)}
 
 crossovers=data.frame(ind=seq(1,400),xo_no=total_xo)
 ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="black") + theme_classic() +
@@ -148,16 +174,14 @@ ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="
 Convert the dh_pop object into breakpoints dataframe
 ```{r}
 #This should be its own function
-breaktable=make_breaktable(dh_pop)
+breaktable=make_breaktable(dh_pop,n=10,c=1,het=F)
 head(breaktable)
 ```
 
 ### Visualization
 
 Plotting some of the lines can be useful in seeing how representative the simulated lines are.
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+plot_Pop(breaktable = breaktable,n=10,c=1,het=F)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

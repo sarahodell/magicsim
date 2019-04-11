@@ -7,11 +7,11 @@
 offspring(p1, p2, chroms, g_map)
 }
 \arguments{
-\item{p1}{The first parents to cross. A chromosome object created by chrom_init()}
+\item{p1}{The first parents to cross. An Indv object created by indv_init()}
 
-\item{p2}{The second parent to cross. A chromosome object created by chrom_init()}
+\item{p2}{The second parent to cross. An Indv object created by indv_init()}
 
-\item{chroms}{List of chromosomes, or one chromosome}
+\item{chroms}{The number of chromosomes}
 
 \item{g_map}{The genetic map}
 }

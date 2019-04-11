@@ -1,6 +1,6 @@
 Package: magicsim
 Title: Simulations of Populations Involving Complex Crosses
-Version: 0.0.0.9000
+Version: 1.0.0.1000
 Authors@R: 
     person(given = "Sarah",
            family = "Odell",

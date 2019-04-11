@@ -2,12 +2,13 @@
 % Please edit documentation in R/make_magic.R
 \name{make_magic}
 \alias{make_magic}
-\title{Creates a MAGIC population in funnel crossing scheme from lines in list object start_pop}
+\title{make_magic ------------------------------------------------------------------------
+Creates a MAGIC line in funnel crossing scheme from lines in list object start_pop}
 \usage{
 make_magic(start_pop, c = 10, g_map)
 }
 \arguments{
-\item{start_pop}{A list of chromosome objects from the starting lines of the MAGIC, should be an even number of lines
+\item{start_pop}{A Pop object from the starting lines of the MAGIC, should be an even number of lines
 and listed in the order that crossing should occur}
 
 \item{c}{Chromosome number (default is 10)}
@@ -15,8 +16,9 @@ and listed in the order that crossing should occur}
 \item{g_map}{The genetic map}
 }
 \value{
-A list of chromosome objects that are a result of funnel crossing the lines in start_pop
+An indv object that is the result of funnel crossing the lines in start_pop
 }
 \description{
-Creates a MAGIC population in funnel crossing scheme from lines in list object start_pop
+make_magic ------------------------------------------------------------------------
+Creates a MAGIC line in funnel crossing scheme from lines in list object start_pop
 }

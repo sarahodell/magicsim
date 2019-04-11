@@ -7,7 +7,7 @@
 get_gametes(parent, recomb, c)
 }
 \arguments{
-\item{parent}{list object in format created from chrom_init}
+\item{parent}{ChromPair object in format created from chrom_init}
 
 \item{recomb}{dataframe of genetic and physical map for chrom c}
 

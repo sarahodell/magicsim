@@ -4,19 +4,19 @@
 \alias{make_f1}
 \title{Create an F1 from two parents}
 \usage{
-make_f1(p1, p2, g_map, c = 10)
+make_f1(p1, p2, g_map, chroms = 10)
 }
 \arguments{
-\item{p1}{The first parents to cross. A chromosome object created by chrom_init()}
+\item{p1}{The first parents to cross. An Indv object created by indv_init()}
 
-\item{p2}{The second parent to cross. A chromosome object created by chrom_init()}
+\item{p2}{The second parent to cross. An Indv object created by indv_init()}
 
 \item{g_map}{Dataframe with physical and genetic positions for chromosome trying to be simulated. Of format chr,physical_position,gentic_position}
 
-\item{c}{chromsome number (default is 10)}
+\item{chroms}{chromsome number, default=10}
 }
 \value{
-A chromosome object with one chromosme pulled from both of the parents
+An Indv object with one chromosome pulled from both of the parents
 }
 \description{
 Create an F1 from two parents

@@ -1,20 +1,20 @@
 #' Generate offspring from a cross between two parents
 #'
-#' @param p1 The first parents to cross. A chromosome object created by chrom_init()
-#' @param p2 The second parent to cross. A chromosome object created by chrom_init()
-#' @param chroms List of chromosomes, or one chromosome
+#' @param p1 The first parents to cross. An Indv object created by indv_init()
+#' @param p2 The second parent to cross. An Indv object created by indv_init()
+#' @param chroms The number of chromosomes
 #' @param g_map The genetic map
 #'
 #' @return A chromosome object that is the combination of two the two parents with potential crossing over
 #' @export
 
 offspring<-function(p1,p2,chroms,g_map){
-  offspring=list()
-  for(c in chroms){
+  offspring=Indv(nChr=chroms,chromlist=vector("list", length=chroms))
+  for(c in 1:chroms){
     recomb=g_map[g_map$chr==c,]
-    h1=get_gametes(p1[[c]],recomb,c)
-    h2=get_gametes(p2[[c]],recomb,c)
-    offspring[[c]]=list(chr=c,h1=h1,h2=h2)
+    h1=get_gametes(p1[c],recomb,c)
+    h2=get_gametes(p2[c],recomb,c)
+    offspring[c]=ChromPair(chr=c,h1=h1,h2=h2)
   }
   return(offspring)
 }

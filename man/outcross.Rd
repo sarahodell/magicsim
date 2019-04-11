@@ -4,19 +4,21 @@
 \alias{outcross}
 \title{Function to outcross population for ngen generations}
 \usage{
-outcross(pop, ngen, c, g_map)
+outcross(pop, ngen, c, g_map, endsize = NULL)
 }
 \arguments{
-\item{pop}{Starting population, pop[[i]] is the output of function offspring (list of lists)}
+\item{pop}{Pop object representing starting population}
 
 \item{ngen}{The number of generations of outcrossing}
 
 \item{c}{The chromosome being simulated}
 
 \item{g_map}{The genetic map}
+
+\item{endsize}{The size of the resulting population, if NULL, pop will be same size as starting pop}
 }
 \value{
-A synthetic population of the same size as the initial population, pop that
+A synthetic population that
 has been randomly outcrossed for ngen generations (list of lists)
 }
 \description{

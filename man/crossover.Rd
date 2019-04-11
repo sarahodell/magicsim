@@ -9,9 +9,9 @@ crossover(xo, donor1, donor2, recomb, c)
 \arguments{
 \item{xo}{the number of crossovers}
 
-\item{donor1}{list object of one chromosome in format created from chrom_init, crossover starts with this one}
+\item{donor1}{Chrom object in format created from chrom_init, crossover starts with this one}
 
-\item{donor2}{list object of one chromosome in format created from chrom_init}
+\item{donor2}{Chrom object in format created from chrom_init}
 
 \item{recomb}{dataframe of genetic and physical map for chrom c}
 

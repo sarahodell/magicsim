@@ -14,10 +14,21 @@
 
 chrom_init <- function(c=10,map,h1_breakpoints=NULL,h1_donors=c('A'),h2_breakpoints=NULL,h2_donors=c('A')){
   chrom_end=max(map[map$chr==c,]$pos)
+
   if(is.null(h1_breakpoints) & is.null(h2_breakpoints)){
     h1_breakpoints=c(chrom_end)
     h2_breakpoints=c(chrom_end)
   }
-  ind = list(chr=c,h1=list(breakpoints=h1_breakpoints,donors=h1_donors),h2=list(breakpoints=h2_breakpoints,donors=h2_donors))
-  return(ind)
+  h1=Chrom(
+           chr=c,
+          breakpoints=h1_breakpoints,
+          donors=h1_donors,
+         xo_no=0)
+  h2=Chrom(
+           chr=c,
+           breakpoints=h1_breakpoints,
+           donors=h2_donors,
+         xo_no=0)
+  pair = ChromPair(chr=c,h1=h1,h2=h2)
+  return(pair)
 }

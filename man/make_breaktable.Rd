@@ -2,18 +2,22 @@
 % Please edit documentation in R/make_breaktable.R
 \name{make_breaktable}
 \alias{make_breaktable}
-\title{Create dataframe of breakpoint locations for simulated population}
+\title{Create dataframe of breakpoint locations for a one chromsome for a Pop object}
 \usage{
-make_breaktable(pop, c = 10)
+make_breaktable(pop, n = NULL, c = 10, het = T)
 }
 \arguments{
-\item{pop}{The population of simulated lines}
+\item{pop}{A Pop object}
 
-\item{c}{The chromosome being simulated}
+\item{n}{The number of individuals to include in the table. Default is all of them.}
+
+\item{c}{The chromosome number}
+
+\item{het}{Whether or not the chromosomes are heterozygous. Default is TRUE}
 }
 \value{
-a dataframe with a the parental donor and location of breakpoints
+a dataframe with the parental donor and location of breakpoints
 }
 \description{
-Create dataframe of breakpoint locations for simulated population
+Create dataframe of breakpoint locations for a one chromsome for a Pop object
 }
