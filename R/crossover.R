@@ -55,7 +55,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       #  recomb_donor=c(donor1@donors[1:d1_index],donor2@donors[d2_index:length(donor2@donors)])
       #}
       #else{
-      #  print("3-2")
+        #print("3-2")
       d1_index=which(max(d1_lower)==donor1@breakpoints)
       recomb_pos=c(donor1@breakpoints[1:d1_index],p,donor2@breakpoints[d2_index:length(donor2@breakpoints)])
       d1_index=d1_index+1

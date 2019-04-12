@@ -18,13 +18,18 @@ knitr::opts_chunk$set(echo = TRUE)
 The following uses magicsim to simulate 400 double haploid maize lines that were derived from a 16-way Multi-parent Advanced Generation InterCross (MAGIC) funnel crossing scheme.
 
 | A x B | C x D | E x F | G x H | I x J | K x L | M x N | O x P |
+
 |       | AB x CD | EF x GH | IJ x KL | MN  x OP |      |       |
+
 |       |         | ABCD x EFGH | IJKL x MNOP |   |    |   |    |
+
 |       |         |  ABCDEFGH x IJKLMNOP |    |   |    |   |    |
+
                         
 A population of 2000 MAGIC lines are created, followed by 3 generations of outcrossing (synthetic). Then 400 of these MAGIC S3 lines are made into double haploids (entirely homozygous).                 
 ### Installation
-```{r }
+```{r results='asis', echo=FALSE, include=FALSE,}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
 ### Script to simulate 400 Double Haploid MAGIC lines
 
 devtools::install_github('sarahodell/magicsim',force = T)
@@ -71,7 +76,7 @@ Using the crossing order above and the simulated founder chromosomes, we can cre
 ```{r}
 ### Create F1s from the first round of crossing
 #Create an empty Pop object
-f1s=Pop(nIndv=8,indvlist=vector("list",length=8))
+f1s=new("Pop",nIndv=8,indvlist=vector("list",length=8))
 
 #Make F1s for each of the first crosses and add to the Pop object
 for(i in seq(1,8)){
@@ -107,7 +112,7 @@ What do they look like?
 Convert the Pop object to a breaktable to visualize crossovers. Here is one for just 10 of the lines. Can specify heterozygous or homozygous
 
 ```{r}
-breaktable=make_breaktable(magic_pop,n=10,c=1,het=T)
+breaktable=make_pop_breaktable(magic_pop,n=10,c=1,het=T)
 head(breaktable)
 ```
 
@@ -174,7 +179,7 @@ ggplot(crossovers,aes(x=xo_no)) + geom_histogram(bins=9,fill="darkgreen",color="
 Convert the dh_pop object into breakpoints dataframe
 ```{r}
 #This should be its own function
-breaktable=make_breaktable(dh_pop,n=10,c=1,het=F)
+breaktable=make_pop_breaktable(dh_pop,n=10,c=1,het=F)
 head(breaktable)
 ```
 

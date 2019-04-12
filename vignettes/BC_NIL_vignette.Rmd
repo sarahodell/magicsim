@@ -17,17 +17,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The following uses magicsim to simulate 100 BC6 NIL maize lines from a cross between B73 and PT
 
-| B73 x PT|
-      |   x B73 | 
-      |   x B73 |
-      |   x B73 |
-      |   x B73 |
-      |   x B73 |
-      |   x B73 |
+      | B73 x PT|
+
+      | F1  x F1 | 
+      
+      | F2  x B73 |
+      
+      | BC1  x B73 |
+      
+      | BC2  x B73 |
+      
+    |6 generations of selfing|
                         
 A population of F1 lines are created, followed by 3 generations of backcrossing and multiple generactions of selfing to make Near Isogenic Lines (NILs)                 
 ### Installation
-```{r warnings=F}
+```{r results='asis', echo=FALSE, include=FALSE,}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
 ### Script to simulate 400 Double Haploid MAGIC lines
 
 devtools::install_github('sarahodell/magicsim',force = T)
@@ -83,7 +88,7 @@ bc_nils=self_pop(bc_pop,c=1,ngen=6,g_map=gmap)
 
 We can visualize the chromsome for 10 individuals in the population
 ```{r}
-breaktable=make__pop_breaktable(bc_nils,n=10,c=1,het=F)
+breaktable=make_pop_breaktable(bc_nils,n=10,c=1,het=F)
 plot_Pop(breaktable,n=10,c=1,het=F)
 ```
 
