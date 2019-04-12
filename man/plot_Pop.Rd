@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_Pop.R
 \name{plot_Pop}
 \alias{plot_Pop}
-\title{Create dataframe of breakpoint locations for a single ChromPair object}
+\title{plot_Pop ---------------------------------------------------------------}
 \usage{
 plot_Pop(breaktable, n = 10, c = 10, het = T)
 }
@@ -19,5 +19,5 @@ plot_Pop(breaktable, n = 10, c = 10, het = T)
 a dataframe with the parental donor and location of breakpoints
 }
 \description{
-Create dataframe of breakpoint locations for a single ChromPair object
+Plot one chromosome for multiple individuals in a population
 }

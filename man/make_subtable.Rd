@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_breaktable.R
 \name{make_subtable}
 \alias{make_subtable}
-\title{Create dataframe of breakpoint locations for a single ChromPair object}
+\title{make_subtable --------------------------------------------------------}
 \usage{
 make_subtable(chrom, sample, het = T)
 }

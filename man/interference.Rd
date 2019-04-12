@@ -5,7 +5,7 @@
 \title{If the two crossover events are too close to each other,
 only keep one of the crossover locations}
 \usage{
-interference(xo_pos, dist = 1e+07)
+interference(xo_pos, dist = 10000000)
 }
 \arguments{
 \item{xo_pos}{crossover position (int)}

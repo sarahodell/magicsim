@@ -1,4 +1,6 @@
-#' Create dataframe of breakpoint locations for a single ChromPair object
+#'make_subtable --------------------------------------------------------
+#'
+#'  Create dataframe of breakpoint locations for a single ChromPair object
 #' @param chrom A ChromPair object
 #' @param sample The sample name
 #' @param het Whether or not the ChromPair is heterozygous. Default is TRUE
@@ -52,6 +54,7 @@ make_subtable <- function(chrom,sample,het=T){
   return(breaks_table)
 }
 
+#' make_pop_breaktable --------------------------------------------------------
 #' Create dataframe of breakpoint locations for a one chromsome for a Pop object
 #' @param pop A Pop object
 #' @param n The number of individuals to include in the table. Default is all of them.
@@ -61,7 +64,7 @@ make_subtable <- function(chrom,sample,het=T){
 #' @return a dataframe with the parental donor and location of breakpoints
 #' @export
 
-make_breaktable <- function(pop,n=NULL,c=10,het=T){
+make_pop_breaktable <- function(pop,n=NULL,c=10,het=T){
   breaks_table=c()
   if(is.null(n)){
     n=length(pop@indvlist)
@@ -69,6 +72,35 @@ make_breaktable <- function(pop,n=NULL,c=10,het=T){
   for(i in seq(1,n)){
     sample=sprintf('Sim%.0f',i)
     ind=pop[i][c]
+    breaks=make_subtable(ind,sample,het)
+    breaks_table=rbind(breaks_table,breaks)
+  }
+  breaks_table=as.data.frame(breaks_table)
+  names(breaks_table)=c('sample','chr','hom','start','end','donor1','donor2')
+  breaks_table$sample=as.character(breaks_table$sample)
+  breaks_table$chr=as.numeric(as.character(breaks_table$chr))
+  breaks_table$hom=as.character(breaks_table$hom)
+  breaks_table$start=as.numeric(as.character(breaks_table$start))
+  breaks_table$end=as.numeric(as.character(breaks_table$end))
+  breaks_table$donor1=as.character(breaks_table$donor1)
+  breaks_table$donor2=as.character(breaks_table$donor2)
+  return(breaks_table)
+}
+
+#' make_indv_breaktable --------------------------------------------------------
+#' Create dataframe of breakpoint locations for a one Indv object for all chromosomes
+#' @param indv A Pop object
+#' @param het Whether or not the chromosomes are heterozygous. Default is TRUE
+#'
+#' @return a dataframe with the parental donor and location of breakpoints
+#' @export
+
+make_indv_breaktable<-function(indv,het=T){
+  breaks_table=c()
+  chr=indv@nChr
+  for(i in 1:chr){
+    ind=indv[i]
+    sample="Sim1"
     breaks=make_subtable(ind,sample,het)
     breaks_table=rbind(breaks_table,breaks)
   }

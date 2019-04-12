@@ -13,8 +13,10 @@ offspring<-function(p1,p2,chroms,g_map){
   for(c in 1:chroms){
     recomb=g_map[g_map$chr==c,]
     h1=get_gametes(p1[c],recomb,c)
+    h1=remove_unseen(h1)
     h2=get_gametes(p2[c],recomb,c)
-    offspring[c]=ChromPair(chr=c,h1=h1,h2=h2)
+    h2=remove_unseen(h2)
+    offspring@chromlist[[c]]=ChromPair(chr=c,h1=h1,h2=h2)
   }
   return(offspring)
 }
