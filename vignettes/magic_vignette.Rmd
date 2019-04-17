@@ -79,8 +79,10 @@ Using the crossing order above and the simulated founder chromosomes, we can cre
 f1s=new("Pop",nIndv=8,indvlist=vector("list",length=8))
 
 #Make F1s for each of the first crosses and add to the Pop object
-for(i in seq(1,8)){
-  f1s@indvlist[[i]]=make_f1(founderpop[i],founderpop[i+1],gmap,chroms=1)
+count=1
+for(i in seq(1,16,2)){
+  f1s@indvlist[[count]]=make_f1(founderpop[i],founderpop[i+1],gmap,chroms=1)
+  count=count+1
 }
 
 ```
@@ -89,14 +91,13 @@ for(i in seq(1,8)){
 
 
 Create synthetic population of 1000 lines from MAGIC founder funnel
-```{r}
+```{r, echo=F}
 magic_pop=make_magic_pop(start_pop=f1s,c=1,g_map=gmap,popsize=1000)
 ```
 
 Look at number of recombinations in magic f4 lines
 
 ```{r}
-no=sapply(seq(1,1000),function(x) length(magic_pop[x][1]@h1@donors))
 #what is the distribution of xo_no in the population?
 total_xo=c()
 for(i in seq(1,1000)){total_xo=c(total_xo,magic_pop[i][1]@h1@xo_no)}
@@ -129,15 +130,13 @@ plot_Pop(breaktable,n=10,c=1,het=T)
 
 Random outcrossing within the synthetic population of 1000 individuals for 3 generations
 
-```{r}
+```{r, echo=F}
 synth_pop=outcross(magic_pop,3,1,gmap)
 ```
 
 Look at number of recombinations in synthetic 3 lines
 
 ```{r}
-no=sapply(seq(1,1000),function(x) length(synth_pop[x][1]@h1@donors))
-
 #what is the distribution of xo_no in the population?
 total_xo=c()
 for(i in seq(1,1000)){total_xo=c(total_xo,synth_pop[i][1]@h1@xo_no)}
