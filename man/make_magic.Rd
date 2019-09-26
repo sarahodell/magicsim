@@ -5,13 +5,11 @@
 \title{make_magic ------------------------------------------------------------------------
 Creates a MAGIC line in funnel crossing scheme from lines in list object start_pop}
 \usage{
-make_magic(pop1, pop2, c = 10, g_map)
+make_magic(start_pop, c = 10, g_map)
 }
 \arguments{
-\item{pop1}{A Pop object from the starting lines of the MAGIC, should be an even number of lines
+\item{start_pop}{A Pop object from the starting lines of the MAGIC, should be an even number of lines
 and listed in the order that crossing should occur}
-
-\item{pop2}{A Pop object}
 
 \item{c}{Chromosome number (default is 10)}
 
