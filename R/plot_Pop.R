@@ -14,6 +14,8 @@ plot_Pop <- function(breaktable,n=10,c=10,het=T){
   if(het==F){
     breaktable=breaktable[breaktable$hom=="H1",]
   }
+  samples=unique(breaktable$sample)[1:n]
+  breaktable=breaktable[breaktable$sample %in% samples,]
   breaktable$sample=sprintf("%s_%s",breaktable$sample,breaktable$hom)
   p <- ggplot(breaktable,aes(x=start/1e6,y=1,color=donor)) +
     geom_segment(aes(xend=end/1e6,color=donor,yend=1),lineend="butt",size=10) +
