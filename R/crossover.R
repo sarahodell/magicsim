@@ -9,7 +9,7 @@
 #' @export
 
 crossover<-function(xo,donor1,donor2,recomb,c){
-  interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos))
+  interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos),ties="ordered")
   draw=runif(xo)
   xo_pos=round(interp(draw*max(recomb$scaled_cM)),0)
   xo_pos=sort(xo_pos)
