@@ -92,5 +92,6 @@ Can also do for all 10 chromosomes
 
 ```{r}
 indv_breaktable=make_indv_breaktable(rils5@indvlist[[1]])
+
 plot_Indv(indv_breaktable)
 ```
