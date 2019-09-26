@@ -58,7 +58,7 @@ We can create F1s from the first round of crossing.
 #Make F1s for each of the first crosses
 #f1=make_f1(B73,Mo17,gmap,chroms=c)
 
-n=10
+n=100
 
 ### Create F1s from the first round of crossing
 f1s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
@@ -82,13 +82,13 @@ rils5=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
 
 ### Visualization
 
-We can visualize the chromsome for 10 individuals in the population
+We can visualize chromsome 10 for 10 individuals in the population
 ```{r}
-breaktable=make_pop_breaktable(rils5,n=9,c=10,het=T)
-plot_Pop(breaktable,n=10,c=1,het=T)
+pop_breaktable=make_pop_breaktable(rils5,c=10,het=T)
+plot_Pop(pop_breaktable,n=10,c=10,het=T)
 ```
 
-Can also do for all 10 chromosomes
+Can also do for all 10 chromosomes on one individual
 
 ```{r}
 indv_breaktable=make_indv_breaktable(rils5@indvlist[[1]])

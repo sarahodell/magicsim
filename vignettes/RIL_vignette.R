@@ -19,7 +19,7 @@ gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
 founders=c("Mo17","B73")
 
 ### Simulate chromosomes 1 throught 10
-c=8
+c=10
 ### Initialize the founders
 B73=indv_init(chr=c,gmap,h1_donors=c("B73"),h2_donors=c("B73"))
 Mo17=indv_init(chr=c,gmap,h1_donors=c("Mo17"),h2_donors=c("Mo17"))
@@ -29,7 +29,7 @@ Mo17=indv_init(chr=c,gmap,h1_donors=c("Mo17"),h2_donors=c("Mo17"))
 #Make F1s for each of the first crosses
 #f1=make_f1(B73,Mo17,gmap,chroms=c)
 
-n=20
+n=100
 
 ### Create F1s from the first round of crossing
 f1s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
@@ -42,8 +42,14 @@ for(i in seq(1,n)){
 ## ------------------------------------------------------------------------
 gen=5
 
-
-#f2=offspring(f1,f1,c,gmap)
-
 rils5=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
+
+## ------------------------------------------------------------------------
+pop_breaktable=make_pop_breaktable(rils5,c=10,het=T)
+plot_Pop(pop_breaktable,n=10,c=10,het=T)
+
+## ------------------------------------------------------------------------
+indv_breaktable=make_indv_breaktable(rils5@indvlist[[1]])
+
+plot_Indv(indv_breaktable)
 
