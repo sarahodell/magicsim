@@ -11,4 +11,4 @@ Simulated crosses can be used to validate other software, such as R/qtl2. Code t
 For more information, see vignettes/
 
 Created by: Sarah Odell
-Last Updated: 04/11/19
+Last Updated: 09/26/19
