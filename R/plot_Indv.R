@@ -11,7 +11,7 @@ plot_Indv <- function(breaktable,het=T){
   if(het==F){
     breaktable=breaktable[breaktable$hom=="H1",]
   }
-  breaktable$chr_f=factor(sprintf("%s_%s",breaktable$chr,breaktable$hom))
+  breaktable$chr_f=factor(sprintf("%s_%s",breaktable$chr,breaktable$hom),levels=c(sprintf("%s_%s",breaktable$chr,breaktable$hom)))
   p <- ggplot(breaktable,aes(x=start/1e6,y=1,color=donor)) +
     geom_segment(aes(xend=end/1e6,color=donor,yend=1),lineend="butt",size=10) +
     facet_grid(chr_f ~ .) +
