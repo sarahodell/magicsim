@@ -30,3 +30,4 @@ for(i in seq(1,1000)){
   f2_1=magicsim::crossover(2,h1,h2,recomb,1)
 }
 
+
