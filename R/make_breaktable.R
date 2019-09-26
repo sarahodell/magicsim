@@ -75,7 +75,7 @@ make_pop_breaktable <- function(pop,n=NULL,c=10,het=T){
     breaks=make_subtable(ind,sample,het)
     breaks_table=rbind(breaks_table,breaks)
   }
-  breaks_table=as.data.frame(breaks_table)
+  breaks_table=as.data.frame(breaks_table,stringsAsFactors=F)
   rownames(breaks_table)=seq(1,dim(breaks_table)[1])
   names(breaks_table)=c('sample','chr','hom','start','end','donor')
   breaks_table$sample=as.character(breaks_table$sample)
@@ -104,7 +104,7 @@ make_indv_breaktable<-function(indv,het=T){
     breaks=make_subtable(ind,sample,het)
     breaks_table=rbind(breaks_table,breaks)
   }
-  breaks_table=as.data.frame(breaks_table)
+  breaks_table=as.data.frame(breaks_table,stringsAsFactors=F)
   rownames(breaks_table)=seq(1,dim(breaks_table)[1])
   names(breaks_table)=c('sample','chr','hom','start','end','donor')
   breaks_table$sample=as.character(breaks_table$sample)
