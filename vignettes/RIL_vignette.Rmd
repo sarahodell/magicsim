@@ -76,9 +76,6 @@ Self 1,000 F1s for 5 generations
 ```{r}
 gen=5
 
-
-#f2=offspring(f1,f1,c,gmap)
-
 rils5=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
 ```
 
@@ -87,7 +84,7 @@ rils5=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
 
 We can visualize the chromsome for 10 individuals in the population
 ```{r}
-breaktable=make_pop_breaktable(rils5,n=10,c=10,het=T)
+breaktable=make_pop_breaktable(rils5,n=9,c=10,het=T)
 plot_Pop(breaktable,n=10,c=1,het=T)
 ```
 
