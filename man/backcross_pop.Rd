@@ -8,7 +8,9 @@
 backcross_pop(p1, pop, c, n, ngen, g_map)
 }
 \arguments{
-\item{pop}{An Pop object}
+\item{p1}{An Indv object, the one to backcross to}
+
+\item{pop}{A Pop object}
 
 \item{c}{The number of chromosomes}
 
@@ -17,8 +19,6 @@ backcross_pop(p1, pop, c, n, ngen, g_map)
 \item{ngen}{The number of generations of backcrossing}
 
 \item{g_map}{The genetic map}
-
-\item{bc_ind}{An Indv object, the one to backcross to}
 }
 \value{
 An Pop object of individuals that have been backcrossed to p1 for ngen generations

@@ -24,8 +24,8 @@ backcross <- function(p1,p2,c,ngen,g_map){
 #' backcross_pop -------------------------------------------------------
 #'  Intialize a Pop object created by backcrossing two Indv objects
 #'
-#' @param bc_ind An Indv object, the one to backcross to
-#' @param pop An Pop object
+#' @param p1 An Indv object, the one to backcross to
+#' @param pop A Pop object
 #' @param c The number of chromosomes
 #' @param n The number of individuals in the population
 #' @param ngen The number of generations of backcrossing
