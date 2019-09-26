@@ -12,9 +12,8 @@ plot_Indv <- function(breaktable,het=T){
     breaktable=breaktable[breaktable$hom=="H1",]
   }
   breaktable$chr=sprintf("%s_%s",breaktable$chr,breaktable$hom)
-  plot_table=c()
   p <- ggplot(breaktable,aes(x=start/1e6,y=1,color=donor)) +
-    geom_segment(aes(xend=end/1e6,color=donor1,yend=1),lineend="butt",size=10) +
+    geom_segment(aes(xend=end/1e6,color=donor,yend=1),lineend="butt",size=10) +
     facet_grid(chr ~ .) +
     ggtitle("Chromosome Breakpoints") +
     xlab("Position (Mb)")  +
