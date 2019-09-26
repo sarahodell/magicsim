@@ -4,10 +4,10 @@
 \name{Indv-class}
 \alias{Indv-class}
 \alias{Indv}
-\alias{[,Indv,ANY,ANY,ANY-method}
+\alias{[,Indv-method}
 \title{Indv}
 \usage{
-\S4method{[}{Indv,ANY,ANY,ANY}(x, i)
+\S4method{[}{Indv}(x, i)
 }
 \arguments{
 \item{x}{a 'Indv'}

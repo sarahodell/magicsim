@@ -5,7 +5,7 @@
 \title{make_magic_pop ------------------------------------------------------------------------
 Creates a MAGIC population in funnel crossing scheme from lines in list object start_pop}
 \usage{
-make_magic_pop(start_pop, c = 10, g_map, popsize)
+make_magic_pop(start_pop, ngen = 4, c = 10, g_map, popsize)
 }
 \arguments{
 \item{start_pop}{A Pop object from the starting lines of the MAGIC, should be an even number of lines

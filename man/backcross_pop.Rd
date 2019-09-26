@@ -5,12 +5,10 @@
 \title{backcross_pop -------------------------------------------------------
  Intialize a Pop object created by backcrossing two Indv objects}
 \usage{
-backcross_pop(p1, p2, c, n, ngen, g_map)
+backcross_pop(p1, pop, c, n, ngen, g_map)
 }
 \arguments{
-\item{p1}{An Indv object, the one to backcross to}
-
-\item{p2}{An Indv object}
+\item{pop}{An Pop object}
 
 \item{c}{The number of chromosomes}
 
@@ -19,6 +17,8 @@ backcross_pop(p1, p2, c, n, ngen, g_map)
 \item{ngen}{The number of generations of backcrossing}
 
 \item{g_map}{The genetic map}
+
+\item{bc_ind}{An Indv object, the one to backcross to}
 }
 \value{
 An Pop object of individuals that have been backcrossed to p1 for ngen generations

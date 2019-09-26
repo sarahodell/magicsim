@@ -26,15 +26,15 @@ self <- function(p1,c,ngen,g_map){
 #' @param c The number of chromosomes
 #' @param ngen The number of generations of selfing
 #' @param g_map The genetic map
-#' @return An Pop object of individuals that have been selfed for ngen generations
+#' @return An Pop object of individuals that have been selfed for ngen generations, single seed descent
 #'
 #'
 #' @export
-#' 
+#'
 
 self_pop <- function(pop,c,ngen,g_map){
   n=pop@nIndv
-  selfed=Pop(nIndv=n,indvlist=vector("list",length=n))
+  selfed=new("Pop",nIndv=n,indvlist=vector("list",length=n))
   for(i in 1:n){
     selfed@indvlist[[i]]=self(pop[i],c,ngen,g_map)
   }

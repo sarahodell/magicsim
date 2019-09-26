@@ -16,7 +16,7 @@ pop_init <- function(n=4,chroms,donors=c("A","B","C","D"),g_map,poptype=NULL){
       indvlist[[i]]=indv_init(c,g_map,h1_donors=donors[i],h2_donors=donors[i])
     }
   }
-  pop = Pop(nIndv=n,indvlist=indvlist)
+  pop = new("Pop",nIndv=n,indvlist=indvlist)
   if(!is.null(poptype)){
     pop@poptype=poptype
   }

@@ -66,7 +66,7 @@ cross_info=founders[cross_order]
 ### Simulate chromosome 1
 c=1
 ### Initialize the 16 founders
-founderpop=pop_init(n=16,chroms=1,donors=cross_info,g_map=gmap,poptype="magic")
+founderpop=pop_init(n=16,chroms=c,donors=cross_info,g_map=gmap,poptype="magic")
 ```
 
 ### Create the first round of F1s
@@ -81,7 +81,7 @@ f1s=new("Pop",nIndv=8,indvlist=vector("list",length=8))
 #Make F1s for each of the first crosses and add to the Pop object
 count=1
 for(i in seq(1,16,2)){
-  f1s@indvlist[[count]]=make_f1(founderpop[i],founderpop[i+1],gmap,chroms=1)
+  f1s@indvlist[[count]]=make_f1(founderpop[i],founderpop[i+1],gmap,chroms=c)
   count=count+1
 }
 

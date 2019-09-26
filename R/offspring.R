@@ -9,9 +9,10 @@
 #' @export
 
 offspring<-function(p1,p2,chroms,g_map){
-  offspring=Indv(nChr=chroms,chromlist=vector("list", length=chroms))
+  offspring=new("Indv",nChr=chroms,chromlist=vector("list", length=chroms))
   for(c in 1:chroms){
     recomb=g_map[g_map$chr==c,]
+    rownames(recomb)=seq(1,dim(recomb)[1])
     h1=get_gametes(p1[c],recomb,c)
     h1=remove_unseen(h1)
     h2=get_gametes(p2[c],recomb,c)

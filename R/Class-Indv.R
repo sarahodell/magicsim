@@ -38,7 +38,7 @@ setMethod("[",
           signature(x="Indv"),
           function(x,i){
             if(any(abs(i)>x@nChr)){
-              stop("Trying to select invalid individuals")
+              stop("Trying to select invalid chromosomes")
             }
             return(x@chromlist[[i]])
         }

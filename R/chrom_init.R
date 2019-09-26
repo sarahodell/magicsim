@@ -19,16 +19,16 @@ chrom_init <- function(c=10,map,h1_breakpoints=NULL,h1_donors=c('A'),h2_breakpoi
     h1_breakpoints=c(chrom_end)
     h2_breakpoints=c(chrom_end)
   }
-  h1=Chrom(
+  h1=new("Chrom",
            chr=c,
           breakpoints=h1_breakpoints,
           donors=h1_donors,
          xo_no=0)
-  h2=Chrom(
+  h2=new("Chrom",
            chr=c,
            breakpoints=h1_breakpoints,
            donors=h2_donors,
          xo_no=0)
-  pair = ChromPair(chr=c,h1=h1,h2=h2)
+  pair = new("ChromPair",chr=c,h1=h1,h2=h2)
   return(pair)
 }

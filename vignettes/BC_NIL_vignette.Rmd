@@ -67,7 +67,13 @@ We can create F1s from the first round of crossing.
 ```{r}
 #Make F1s for each of the first crosses
 f1=make_f1(B73,PT,gmap,chroms=1)
-f2=offspring(f1,f1,g_map=gmap,chroms=1)
+n=100
+
+f2s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
+for(i in seq(1,n)){
+  f2s@indvlist[[i]]=offspring(f1,f1,gmap,chroms=1)
+}
+
 ```
 
 ### Building a Backcross 3 NIL Population.
@@ -75,7 +81,8 @@ f2=offspring(f1,f1,g_map=gmap,chroms=1)
 Backcross the F1 onto B73 for 3 generations
 
 ```{r}
-bc_pop=backcross_pop(B73,f2,c=1,n=100,ngen=3,g_map=gmap)
+#Fix this so f2 is a population, not individuals
+bc_pop=backcross_pop(B73,f2s,c=1,n=100,ngen=3,g_map=gmap)
 ```
 
 Then selfed the backcross population for 6 generations to make NILs

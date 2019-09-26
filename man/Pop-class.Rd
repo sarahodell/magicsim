@@ -4,10 +4,10 @@
 \name{Pop-class}
 \alias{Pop-class}
 \alias{Pop}
-\alias{[,Pop,ANY,ANY,ANY-method}
+\alias{[,Pop-method}
 \title{Pop}
 \usage{
-\S4method{[}{Pop,ANY,ANY,ANY}(x, i)
+\S4method{[}{Pop}(x, i)
 }
 \arguments{
 \item{x}{a 'Pop'}
