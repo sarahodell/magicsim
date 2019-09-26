@@ -11,7 +11,7 @@ plot_Indv <- function(breaktable,het=T){
   if(het==F){
     breaktable=breaktable[breaktable$hom=="H1",]
   }
-  breaktable$sample=sprintf("%s_%s",breaktable$sample,breaktable$hom)
+  breaktable$chr=sprintf("%s_%s",breaktable$chr,breaktable$hom)
   plot_table=c()
   p <- ggplot(breaktable,aes(x=start/1e6,y=1,color=donor)) +
     geom_segment(aes(xend=end/1e6,color=donor1,yend=1),lineend="butt",size=10) +
