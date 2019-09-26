@@ -37,7 +37,7 @@ backcross <- function(p1,p2,c,ngen,g_map){
 #'
 
 backcross_pop <- function(p1,pop,c,n,ngen,g_map){
-  bc_pop=Pop(nIndv=n,indvlist=vector("list",length=n))
+  bc_pop=new("Pop",nIndv=n,indvlist=vector("list",length=n))
   for(i in 1:n){
     bc_pop@indvlist[[i]]=backcross(p1,pop@indvlist[[i]],c,ngen,g_map)
   }
