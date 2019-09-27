@@ -25,7 +25,7 @@ A population of F1 lines are created, followed by 5 generations of selfing to ma
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
 ### Script to simulate 400 Double Haploid MAGIC lines
 
-devtools::install_github('sarahodell/magicsim',force = T)
+#devtools::install_github('sarahodell/magicsim',force = T)
 
 library('magicsim')
 library("data.table")
@@ -36,7 +36,7 @@ options(scipen=999)
 ```
 
 ```{r}
-
+set.seed(11)
 gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
 
 # The 2 initial founder maize lines. This could be anything
@@ -71,7 +71,7 @@ for(i in seq(1,n)){
 
 ### Building a Backcross 3 NIL Population.
 
-Self 1,000 F1s for 5 generations
+Self 100 F1s for 5 generations
 
 ```{r}
 gen=5

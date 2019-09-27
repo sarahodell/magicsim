@@ -1,37 +1,7 @@
----
-title: "Simulating a backcross NIL population with magicsim"
-output: rmarkdown::html_vignette
-author: "Sarah Odell"
-date: "4/11/2019"
-vignette: >
-  %\VignetteIndexEntry{"Simulating a backcross NIL population with magicsim"}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
-
-```{r setup, include=FALSE}
+## ----setup, include=FALSE------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-## Simulating a BC6 NIL population with magic sim
-
-The following uses magicsim to simulate 100 BC6 NIL maize lines from a cross between B73 and PT
-
-      | B73 x PT|
-
-      | F1  x F1 | 
-      
-      | F2  x B73 |
-      
-      | BC1  x B73 |
-      
-      | BC2  x B73 |
-      
-    |6 generations of selfing|
-                        
-A population of F1 lines are created, followed by 3 generations of backcrossing and multiple generactions of selfing to make Near Isogenic Lines (NILs)                 
-### Installation
-```{r results='asis', echo=FALSE, include=FALSE,}
+## ----results='asis', echo=FALSE, include=FALSE---------------------------
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
 ### Script to simulate 400 Double Haploid MAGIC lines
 
@@ -44,9 +14,8 @@ library("ggplot2")
 
 options(scipen=999)
 set.seed(11)
-```
 
-```{r}
+## ------------------------------------------------------------------------
 
 gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
 
@@ -59,13 +28,8 @@ c=1
 B73=indv_init(chr=1,gmap,h1_donors=c("B73"),h2_donors=c("B73"))
 PT=indv_init(chr=1,gmap,h1_donors=c("PT"),h2_donors=c("PT"))
 
-```
 
-### Create the first round of F1s
-
-We can create F1s from the first round of crossing.
-
-```{r}
+## ------------------------------------------------------------------------
 #Make F1s for each of the first crosses
 f1=make_f1(B73,PT,gmap,chroms=1)
 n=100
@@ -75,34 +39,19 @@ for(i in seq(1,n)){
   f2s@indvlist[[i]]=offspring(f1,f1,gmap,chroms=1)
 }
 
-```
 
-### Building a Backcross 3 NIL Population.
-
-Backcross the F1 onto B73 for 3 generations
-
-```{r}
+## ------------------------------------------------------------------------
 #Fix this so f2 is a population, not individuals
 bc_pop=backcross_pop(B73,f2s,c=1,n=100,ngen=3,g_map=gmap)
-```
 
-Then selfed the backcross population for 6 generations to make NILs
-
-```{r}
+## ------------------------------------------------------------------------
 bc_nils=self_pop(bc_pop,c=1,ngen=6,g_map=gmap)
-```
 
-### Visualization
-
-We can visualize the chromsome for 10 individuals in the population
-```{r}
+## ------------------------------------------------------------------------
 breaktable=make_pop_breaktable(bc_nils,n=10,c=1,het=F)
 plot_Pop(breaktable,n=10,c=1,het=F)
-```
 
-Can also do for all 10 chromosomes
-
-```{r}
+## ------------------------------------------------------------------------
 B73=indv_init(chr=10,gmap,h1_donors=c("B73"),h2_donors=c("B73"))
 PT=indv_init(chr=10,gmap,h1_donors=c("PT"),h2_donors=c("PT"))
 f1=make_f1(B73,PT,gmap,chroms=10)
@@ -110,4 +59,4 @@ f2=offspring(f1,f1,g_map=gmap,chroms=10)
 
 indv_breaktable=make_indv_breaktable(f2,het=F)
 plot_Indv(indv_breaktable,het=F)
-```
+
