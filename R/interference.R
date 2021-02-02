@@ -5,7 +5,7 @@
 #' @export
 
 
-interference <- function(xo_pos,dist=1e7){
+interference <- function(xo_pos,dist=1e5){
   while(sum(diff(xo_pos) < dist) != 0){
     closest=c(which.min(diff(xo_pos)),which.min(diff(xo_pos))+1)
     choice=sample(closest,1)

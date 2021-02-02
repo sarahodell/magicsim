@@ -21,7 +21,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
     # If p is equal to a pre-existing breakpoint, shift p up 100 base pairs
     if((0 %in% c(p-donor1@breakpoints)) | (0 %in% c(p-donor2@breakpoints))){
       #print("Overlap")
-      p = p+100
+      p = p+1000
     }
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors
