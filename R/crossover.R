@@ -23,7 +23,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
     if((0 %in% c(p-donor1@breakpoints)) | (0 %in% c(p-donor2@breakpoints))){
       #print("Overlap")
       p = p+1000
-      print(sprintf("New p %.0f",p)
+      print(sprintf("New p %.0f",p))
     }
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors
