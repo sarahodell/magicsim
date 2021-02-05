@@ -15,10 +15,10 @@ crossover<-function(xo,donor1,donor2,recomb,c){
   draw=runif(xo)
   xo_pos=round(interp(draw*max(recomb$scaled_cM)),0)
   xo_pos=sort(xo_pos)
-  if(xo>=2){
+  #if(xo>=2){
     #dist=max(recomb$scaled_cM)/100
-    xo_pos=interference(xo_pos)
-  }
+  #  xo_pos=interference(xo_pos)
+  #}
   for(p in sort(xo_pos)){
     print(c)
     print(p)
