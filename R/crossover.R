@@ -12,6 +12,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
   print(c)
   interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos),ties="ordered")
   maxp=max(recomb$pos)
+  print(maxp)
   draw=runif(xo)
   xo_pos=round(interp(draw*max(recomb$scaled_cM)),0)
   xo_pos=sort(xo_pos)
@@ -29,8 +30,8 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       else{
         p = p-1000
       }
-      #print("Overlap")
-      #print(sprintf("New p %.0f",p))
+      print("Overlap")
+      print(sprintf("New p %.0f",p))
     }
     # If this is an F1 cross between inbreds (breakpoints and donors are of length 1)
     # If the new break is less than any previous breakpoint in either of the two donors

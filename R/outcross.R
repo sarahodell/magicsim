@@ -2,7 +2,7 @@
 #'
 #' @param pop Pop object representing starting population
 #' @param ngen The number of generations of outcrossing
-#' @param c The chromosome being simulated
+#' @param c The number of chromosomes
 #' @param g_map The genetic map
 #' @param endsize The size of the resulting population, if NULL, pop will be same size as starting pop
 #'
