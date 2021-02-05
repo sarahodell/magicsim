@@ -9,6 +9,7 @@
 #' @export
 
 crossover<-function(xo,donor1,donor2,recomb,c){
+  print(c)
   interp=approxfun(recomb$scaled_cM,recomb$pos,yleft=min(recomb$pos),yright=max(recomb$pos),ties="ordered")
   maxp=max(recomb$pos)
   draw=runif(xo)
@@ -19,7 +20,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
     xo_pos=interference(xo_pos)
   }
   for(p in sort(xo_pos)){
-    #print(p)
+    print(p)
     # If p is equal to a pre-existing breakpoint, shift p up 100 base pairs
     if((0 %in% c(p-donor1@breakpoints)) | (0 %in% c(p-donor2@breakpoints))){
       if(p < (maxp-1000)){
