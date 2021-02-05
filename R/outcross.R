@@ -2,7 +2,7 @@
 #'
 #' @param pop Pop object representing starting population
 #' @param ngen The number of generations of outcrossing
-#' @param c The number of chromosomes
+#' @param chroms The number of chromosomes
 #' @param g_map The genetic map
 #' @param endsize The size of the resulting population, if NULL, pop will be same size as starting pop
 #'
@@ -10,7 +10,7 @@
 #' has been randomly outcrossed for ngen generations (list of lists)
 #' @export
 
-outcross<-function(pop,ngen,c,g_map,endsize=NULL){
+outcross<-function(pop,ngen,chroms,g_map,endsize=NULL){
   size=length(pop@indvlist)
   if(is.null(endsize)){
     endsize=size
@@ -22,7 +22,7 @@ outcross<-function(pop,ngen,c,g_map,endsize=NULL){
     for(p in seq(1,endsize*2,2)){
       draw1=draw[p]
       draw2=draw[p+1]
-      new_pop@indvlist[[count]]=offspring(pop[draw1],pop[draw2],c,g_map)
+      new_pop@indvlist[[count]]=offspring(pop[draw1],pop[draw2],chroms,g_map)
       count=count+1
     }
     return(new_pop)
@@ -32,8 +32,8 @@ outcross<-function(pop,ngen,c,g_map,endsize=NULL){
   for(p in seq(1,size*2,2)){
     draw1=draw[p]
     draw2=draw[p+1]
-    new_pop@indvlist[[count]]=offspring(pop[draw1],pop[draw2],c,g_map)
+    new_pop@indvlist[[count]]=offspring(pop[draw1],pop[draw2],chroms,g_map)
     count=count+1
   }
-  return(outcross(new_pop,ngen-1,c,g_map,endsize))
+  return(outcross(new_pop,ngen-1,chroms,g_map,endsize))
 }
