@@ -10,7 +10,7 @@ get_gametes<-function(parent,recomb,c){
   #gametes=c(parent$h1,parent$h1,parent$h2,parent$h2)
   #xo = rpois(1,max(recomb$scaled_cM)/100)
   map_length=max(recomb$scaled_cM)
-  xo = rpois(1,map_length/100) # No crossovers 50% of the time
+  xo = rpois(1,(map_length/100) # No crossovers 50% of the time
   if(xo==0){
     if(runif(1)<0.5){
       result=parent@h1

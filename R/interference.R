@@ -9,7 +9,7 @@ interference <- function(xo_pos,dist=1e5){
   while(sum(diff(xo_pos) < dist) != 0){
     closest=c(which.min(diff(xo_pos)),which.min(diff(xo_pos))+1)
     choice=sample(closest,1)
-    xo_pos=(xo_pos[-choice])
+    xo_pos[choice]=xo_pos[choice]+5e5
   }
   return(xo_pos)
 }

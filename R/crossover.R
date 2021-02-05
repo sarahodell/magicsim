@@ -42,18 +42,16 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       recomb_pos=c(p,donor2@breakpoints[d2_index:length(donor2@breakpoints)])
       recomb_donor=c(donor1@donors[1],donor2@donors[d2_index:length(donor2@donors)])
     }
+    #else if(sum(p-donor1@breakpoints>0)==0){
+    #  d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
+  #    d2_index=which(min(d2_upper)==donor2@breakpoints)
+    #}
     #If the new break is less than previous breakpoints in donor2
     #but not in donor1
     # Or both have breakpoints before p
     else{
       #print("3")
       d1_lower=donor1@breakpoints[p-donor1@breakpoints>0]
-      if(length(d1_lower)==0){
-        print("Crossover point")
-        print(p)
-        print("Donor1 Breakpoints")
-        print(donor1@breakpoints)
-      }
       d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
       d2_index=which(min(d2_upper)==donor2@breakpoints)
       #if(length(d1_lower)==0){
