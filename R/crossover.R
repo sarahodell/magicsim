@@ -95,7 +95,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       }
     }
     donor2=donor1
-    donor1=Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length(recomb_pos)-1))
+    donor1=Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length(recomb_pos)-1)
 
   }
   return(Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length(recomb_pos)-1))
