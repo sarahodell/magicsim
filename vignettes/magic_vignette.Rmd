@@ -90,8 +90,51 @@ for(i in seq(1,16,2)){
 
 
 Create synthetic population of 1000 lines from MAGIC founder funnel
-```{r, echo=F}
-magic_pop=make_magic_pop(start_pop=f1s,c=10,g_map=gmap,popsize=500)
+```{r}
+magic_pop=make_magic_pop(start_pop=f1s,c=10,g_map=gmap,popsize=2000)
+```
+
+
+
+244427044
+[1] 2
+[1] 11173069
+[1] "1"
+[1] 2
+[1] 24342415
+[1] "3"
+[1] "No breakpoints in donor2 greater than p"
+[1] 24342415
+[1] "donor1"
+An object of class "Chrom"
+Slot "chr":
+[1] 2
+
+Slot "breakpoints":
+[1]  11173069 244427044
+
+Slot "donors":
+[1] "FV252_inra" "A632_usa"  
+
+Slot "xo_no":
+numeric(0)
+
+[1] "donor2"
+An object of class "Chrom"
+Slot "chr":
+[1] 2
+
+Slot "breakpoints":
+[1] 244427044
+
+Slot "donors":
+[1] "FV252_inra"
+
+Slot "xo_no":
+[1] 0
+
+```{r}
+
 ```
 
 Look at number of recombinations in magic f4 lines
@@ -129,7 +172,7 @@ plot_Pop(breaktable,n=10,c=1,het=T)
 
 Random outcrossing within the synthetic population of 1000 individuals for 3 generations
 
-```{r, echo=F}
+```{r}
 synth_pop=outcross(magic_pop,3,10,gmap)
 ```
 
