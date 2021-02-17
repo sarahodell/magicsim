@@ -56,8 +56,19 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       d1_lower=donor1@breakpoints[p-donor1@breakpoints>0]
       d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
         if(length(d2_upper==0)){
+          print("No breakpoints in donor2 greater than p")
           print(p)
-          print(donor2@breakpoints)
+          print("donor1")
+          print(donor1)
+          print("donor2")
+          print(donor2)
+        }else if(length(d1_lower==0)){
+          print("No breakpoints in donor1 less than p")
+          print(p)
+          print("donor1")
+          print(donor1)
+          print("donor2")
+          print(donor2)
         }
       d2_index=which(min(d2_upper)==donor2@breakpoints)
       d1_index=which(max(d1_lower)==donor1@breakpoints)
