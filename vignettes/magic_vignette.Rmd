@@ -40,7 +40,7 @@ library("tidyverse")
 library("ggplot2")
 
 options(scipen=999)
-set.seed(11)
+set.seed(100)
 ```
 
 ### Initializing Founder lines
@@ -91,7 +91,7 @@ for(i in seq(1,16,2)){
 
 Create synthetic population of 1000 lines from MAGIC founder funnel
 ```{r, echo=F}
-magic_pop=make_magic_pop(start_pop=f1s,c=1,g_map=gmap,popsize=1000)
+magic_pop=make_magic_pop(start_pop=f1s,c=10,g_map=gmap,popsize=500)
 ```
 
 Look at number of recombinations in magic f4 lines
@@ -130,7 +130,7 @@ plot_Pop(breaktable,n=10,c=1,het=T)
 Random outcrossing within the synthetic population of 1000 individuals for 3 generations
 
 ```{r, echo=F}
-synth_pop=outcross(magic_pop,3,1,gmap)
+synth_pop=outcross(magic_pop,3,10,gmap)
 ```
 
 Look at number of recombinations in synthetic 3 lines
