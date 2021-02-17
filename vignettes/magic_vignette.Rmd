@@ -94,27 +94,21 @@ Create synthetic population of 1000 lines from MAGIC founder funnel
 magic_pop=make_magic_pop(start_pop=f1s,c=10,g_map=gmap,popsize=2000)
 ```
 
-
-
-244427044
 [1] 2
-[1] 11173069
-[1] "1"
-[1] 2
-[1] 24342415
-[1] "3"
+[1] 237073571
+[1] "4"
 [1] "No breakpoints in donor2 greater than p"
-[1] 24342415
+[1] 237073571
 [1] "donor1"
 An object of class "Chrom"
 Slot "chr":
 [1] 2
 
 Slot "breakpoints":
-[1]  11173069 244427044
+[1]  24342415  45010316 244427044
 
 Slot "donors":
-[1] "FV252_inra" "A632_usa"  
+[1] "ND245" "F492"  "ND245"
 
 Slot "xo_no":
 numeric(0)
@@ -125,15 +119,84 @@ Slot "chr":
 [1] 2
 
 Slot "breakpoints":
-[1] 244427044
+[1]  24342415 244427044
 
 Slot "donors":
-[1] "FV252_inra"
+[1] "ND245" "F492" 
 
 Slot "xo_no":
-[1] 0
+numeric(0)
+
+
+
+
 
 ```{r}
+donor1=new("Chrom",chr=2,breakpoints=c(24342415,45010316,244427044),donors=c("ND245","F492","ND245"),xo_no=numeric(0))
+
+donor2=new("Chrom",chr=2,breakpoints=c(24342415,244427044),donors=c("ND245","F492"),xo_no=numeric(0))
+
+p=237073571
+
+
+
+print(p)
+# If p is equal to a pre-existing breakpoint, shift p up 100 base pairs
+if((p < donor1@breakpoints[1]) & (p < donor2@breakpoints[1])){
+  print("1")
+  recomb_pos=c(p,donor2@breakpoints)
+  recomb_donor=c(donor1@donors[1],donor2@donors)
+}else if((p < donor1@breakpoints[1]) & (p > donor2@breakpoints[1])){
+  print("2")
+  #If the new break is less than previous breakpoints in donor1
+  #but not in donor2
+  d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
+  d2_index=which(min(d2_upper)==donor2@breakpoints)
+  # New breakpoints are p and all breakpoints from donor2 greater than p
+  recomb_pos=c(p,donor2@breakpoints[d2_index:length(donor2@breakpoints)])
+  recomb_donor=c(donor1@donors[1],donor2@donors[d2_index:length(donor2@donors)])
+}else if((p > donor1@breakpoints[1]) & (p < donor2@breakpoints[1])){
+  print("3")
+  #If the new break is less than previous breakpoints in donor2
+  #but not in donor1
+  d1_lower=donor1@breakpoints[p-donor1@breakpoints>0]
+  d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
+  d2_index=which(min(d2_upper)==donor2@breakpoints)
+  d1_index=which(max(d1_lower)==donor1@breakpoints)
+  recomb_pos=c(donor1@breakpoints[1:d1_index],p,donor2@breakpoints[d2_index:length(donor2@breakpoints)])
+  d1_index=d1_index+1
+  recomb_donor=c(donor1@donors[1:d1_index],donor2@donors[d2_index:length(donor2@donors)])
+}else{
+  print("4")
+  # Or both have breakpoints before p
+  d1_lower=donor1@breakpoints[p-donor1@breakpoints>0]
+  d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
+  if(length(d2_upper)==0){
+    #print("No breakpoints in donor2 greater than p")
+    #print(p)
+    #print("donor1")
+    #print(donor1)
+    #print("donor2")
+    #print(donor2)
+    browser()
+  }else if(length(d1_lower)==0){
+    #print("No breakpoints in donor1 less than p")
+    #print(p)
+    #print("donor1")
+    #print(donor1)
+    #print("donor2")
+    #print(donor2)
+    browser()
+  }else{
+    d2_index=which(min(d2_upper)==donor2@breakpoints)
+    d1_index=which(max(d1_lower)==donor1@breakpoints)
+    recomb_pos=c(donor1@breakpoints[1:d1_index],p,donor2@breakpoints[d2_index:length(donor2@breakpoints)])
+    d1_index=d1_index+1
+    recomb_donor=c(donor1@donors[1:d1_index],donor2@donors[d2_index:length(donor2@donors)])
+  }
+}
+
+donor1=new("Chrom",chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length())
 
 ```
 

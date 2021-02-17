@@ -68,7 +68,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       d1_lower=donor1@breakpoints[p-donor1@breakpoints>0]
       d2_upper=donor2@breakpoints[donor2@breakpoints-p>0]
 
-      if(length(d2_upper==0)){
+      if(length(d2_upper)==0){
         print("No breakpoints in donor2 greater than p")
         print(p)
         print("donor1")
@@ -77,7 +77,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
         print(donor2)
         browser()
       }
-      else if(length(d1_lower==0)){
+      else if(length(d1_lower)==0){
         print("No breakpoints in donor1 less than p")
         print(p)
         print("donor1")
@@ -95,7 +95,7 @@ crossover<-function(xo,donor1,donor2,recomb,c){
       }
     }
     donor2=donor1
-    donor1=Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor)
+    donor1=Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length(recomb_pos)-1))
 
   }
   return(Chrom(chr=c,breakpoints=recomb_pos,donors=recomb_donor,xo_no=length(recomb_pos)-1))
