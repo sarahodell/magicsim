@@ -20,8 +20,8 @@ crossover<-function(xo,donor1,donor2,recomb,c){
   #  xo_pos=interference(xo_pos)
   #}
   for(p in sort(xo_pos)){
-    print(c)
-    print(p)
+    #print(c)
+    #print(p)
     # If p is equal to a pre-existing breakpoint, shift p up 100 base pairs
     while((0 %in% c(p-donor1@breakpoints)) | (0 %in% c(p-donor2@breakpoints))){
       if(p+1000 < maxp){
