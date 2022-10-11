@@ -41,10 +41,10 @@ The genetic map should have the following columns:
 'scaled_cM': genetic position of marker (scaled so that the first marker is 0) (float)
 
 ```{r}
-set.seed(11)
+set.seed(1)
 #read in your genetic map
 gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
-gmap=gmap[,c('chr','pos','scaled_cM')]
+#gmap=gmap[,c('chr','pos','scaled_cM')]
 # The 2 initial founder maize lines. This could be anything
 founders=c("Mo17","B73")
 
@@ -61,15 +61,7 @@ Mo17=indv_init(chr=c,gmap,h1_donors=c("Mo17"),h2_donors=c("Mo17"))
 We can create an F1 from the initial cross.
 
 ```{r}
-n=500
-
-### Create F1s from the first round of crossing
-f1s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
-
-#Make F1s for each of the first crosses and add to the Pop object
-for(i in seq(1,n)){
-  f1s@indvlist[[i]]=make_f1(B73,Mo17,gmap,chroms=c)
-}
+f1=make_f1(B73,Mo17,gmap,chroms=c)
 ```
 
 ### Building an F2 Population.
@@ -77,8 +69,13 @@ for(i in seq(1,n)){
 Self 500 F1s once
 
 ```{r}
+n=500
 gen=1
-f2s=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
+
+f2s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
+for(i in seq(1,n)){
+  f2s@indvlist[[i]]=self(f1,c=c,ngen=gen,g_map=gmap)
+}
 ```
 
 
