@@ -10,8 +10,11 @@ get_gametes<-function(parent,recomb,c){
   #gametes=c(parent$h1,parent$h1,parent$h2,parent$h2)
   #xo = rpois(1,max(recomb$scaled_cM)/100)
   #trying out longer map to increase the number of crossovers
-  map_length=max(recomb$scaled_cM) + max(recomb$scaled_cM)/2
+  map_length=max(recomb$scaled_cM) # + max(recomb$scaled_cM)/2
   xo = rpois(1,(map_length/100)) # No crossovers 50% of the time
+  if(xo > 4){
+    xo=4
+  }
   if(xo==0){
     if(runif(1)<0.5){
       result=parent@h1

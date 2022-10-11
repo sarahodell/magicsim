@@ -1,0 +1,104 @@
+---
+title: "Simulating an F2 population with magicsim"
+output: rmarkdown::html_vignette
+author: "Sarah Odell"
+date: "8/29/2019"
+vignette: >
+  %\VignetteIndexEntry{"Simulating a RIL population with magicsim"}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Simulating an F2 population with magic sim
+
+The following uses magicsim to simulate 500 F2s from a cross between B73 and Mo17
+
+      | B73 x Mo17|
+
+          | F1 | 
+          
+          | F2 |
+                        
+A population of F1 lines are created, followed by 1 generation of selfing to make F2s                 
+### Installation
+```{r results='asis', echo=FALSE, include=FALSE,}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+### Script to simulate 400 Double Haploid MAGIC lines
+
+#devtools::install_github('sarahodell/magicsim',force = T)
+
+library('magicsim')
+library("data.table")
+library("tidyverse")
+library("ggplot2")
+
+options(scipen=999)
+```
+
+The genetic map should have the following columns:
+'chr': chromosome number (integer)
+'pos': physical position of marker (integer)
+'scaled_cM': genetic position of marker (scaled so that the first marker is 0) (float)
+
+```{r}
+set.seed(11)
+#read in your genetic map
+gmap=fread('ogutmap_v4_ordered.csv',data.table=F)
+gmap=gmap[,c('chr','pos','scaled_cM')]
+# The 2 initial founder maize lines. This could be anything
+founders=c("Mo17","B73")
+
+### Simulate chromosomes 1 throught 10
+c=10
+### Initialize the founders
+B73=indv_init(chr=c,gmap,h1_donors=c("B73"),h2_donors=c("B73"))
+Mo17=indv_init(chr=c,gmap,h1_donors=c("Mo17"),h2_donors=c("Mo17"))
+
+```
+
+### Create the first round of F1s
+
+We can create an F1 from the initial cross.
+
+```{r}
+n=500
+
+### Create F1s from the first round of crossing
+f1s=new("Pop",nIndv=n,indvlist=vector("list",length=n))
+
+#Make F1s for each of the first crosses and add to the Pop object
+for(i in seq(1,n)){
+  f1s@indvlist[[i]]=make_f1(B73,Mo17,gmap,chroms=c)
+}
+```
+
+### Building an F2 Population.
+
+Self 500 F1s once
+
+```{r}
+gen=1
+f2s=self_pop(f1s,c=c,ngen=gen,g_map=gmap)
+```
+
+
+### Visualization
+
+We can visualize chromsome 10 for 10 individuals in the population
+```{r}
+pop_breaktable=make_pop_breaktable(f2s,c=10,het=T)
+plot_Pop(pop_breaktable,n=10,c=10,het=T)
+```
+
+Can also do for all 10 chromosomes on one individual
+
+```{r}
+indv_breaktable=make_indv_breaktable(f2s@indvlist[[1]])
+
+plot_Indv(indv_breaktable)
+```
+
+If you want to construct a vcf file from the breakpoints, save the table to a file
+```{r}
+fwrite(pop_breaktable,'F2_500_breaktable.txt',row.names=F,quote=F,sep='\t')
+```
