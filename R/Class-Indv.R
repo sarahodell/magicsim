@@ -11,6 +11,7 @@
 #'
 #' @slot nChr number of chromosomes
 #' @slot chroms list of ChromPair objects
+#' @slot phenolist list of Phenotype objects
 #'
 #'
 #' @export
@@ -18,7 +19,7 @@
 
 setClass("Indv",
          slots=c(nChr="numeric",
-                 chromlist="list")) -> Indv
+                 chromlist="list",phenolist="list")) -> Indv
 
 setValidity("Indv",function(object){
   errors=character()
