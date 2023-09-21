@@ -50,7 +50,7 @@ make_dh_pop <- function(start_pop,n=NULL,c=10,g_map){
   for(d in seq(1,n)){
     line=draw[d]
     # randomly choose one of the two chromosomes
-    dh_pop@indvlist[[d]]=make_dh(synth_pop[line],c,g_map)
+    dh_pop@indvlist[[d]]=make_dh(start_pop[line],c,g_map)
   }
   return(dh_pop)
 }
