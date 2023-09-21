@@ -5,12 +5,12 @@
 \title{If the two crossover events are too close to each other,
 only keep one of the crossover locations}
 \usage{
-interference(xo_pos, dist = 10000000)
+interference(xo_pos, maxp, dist = 1e+05)
 }
 \arguments{
 \item{xo_pos}{crossover position (int)}
 
-\item{dist}{physical distance below which interference occurs (default is 10 Mb)}
+\item{dist}{physical distance below which interference occurs (default is 100 kb)}
 }
 \description{
 If the two crossover events are too close to each other,

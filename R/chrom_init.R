@@ -8,8 +8,8 @@
 #' @param h2_donors donor identities for copy two of chromosome; default is A (list)
 #' @return A list of lists with attributes chr, h1, and h2, with h1 and h2
 #' each containing vectors of breakpoint locations and donor names
-#' @examples
-#' chrom_init(10)
+#'
+#'
 #' @export
 
 chrom_init <- function(c=10,map,h1_breakpoints=NULL,h1_donors=c('A'),h2_breakpoints=NULL,h2_donors=c('A')){

@@ -4,8 +4,14 @@
 \alias{chrom_init}
 \title{Intialize a chromosome object (diploid)}
 \usage{
-chrom_init(c = 10, map, h1_breakpoints = NULL, h1_donors = c("A"),
-  h2_breakpoints = NULL, h2_donors = c("A"))
+chrom_init(
+  c = 10,
+  map,
+  h1_breakpoints = NULL,
+  h1_donors = c("A"),
+  h2_breakpoints = NULL,
+  h2_donors = c("A")
+)
 }
 \arguments{
 \item{c}{Chromosome to initialize (int); default is 10}
@@ -26,7 +32,4 @@ each containing vectors of breakpoint locations and donor names
 }
 \description{
 Intialize a chromosome object (diploid)
-}
-\examples{
-chrom_init(10)
 }

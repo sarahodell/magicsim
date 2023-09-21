@@ -18,13 +18,13 @@
 }
 \description{
 The raw individuals class contains information on
- chromosome breakpoints and donors for one individual.
+chromosome breakpoints and donors for one individual.
 }
 \section{Methods (by generic)}{
 \itemize{
 \item \code{[}: Extract Indv by index
-}}
 
+}}
 \section{Slots}{
 
 \describe{

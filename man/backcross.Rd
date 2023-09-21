@@ -3,7 +3,7 @@
 \name{backcross}
 \alias{backcross}
 \title{backcross -------------------------------------------------------
- Backcross an Indv object}
+Backcross an Indv object}
 \usage{
 backcross(p1, p2, c, ngen, g_map)
 }
@@ -23,5 +23,5 @@ An Indv object that has been backcrossed to p1 for ngen generations
 }
 \description{
 backcross -------------------------------------------------------
- Backcross an Indv object
+Backcross an Indv object
 }

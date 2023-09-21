@@ -3,7 +3,7 @@
 \name{backcross_pop}
 \alias{backcross_pop}
 \title{backcross_pop -------------------------------------------------------
- Intialize a Pop object created by backcrossing two Indv objects}
+Intialize a Pop object created by backcrossing two Indv objects}
 \usage{
 backcross_pop(p1, pop, c, n, ngen, g_map)
 }
@@ -25,5 +25,5 @@ An Pop object of individuals that have been backcrossed to p1 for ngen generatio
 }
 \description{
 backcross_pop -------------------------------------------------------
- Intialize a Pop object created by backcrossing two Indv objects
+Intialize a Pop object created by backcrossing two Indv objects
 }

@@ -3,7 +3,7 @@
 \name{self_pop}
 \alias{self_pop}
 \title{self_pop -------------------------------------------------------
- Self a Pop object}
+Self a Pop object}
 \usage{
 self_pop(pop, c, ngen, g_map)
 }
@@ -21,5 +21,5 @@ An Pop object of individuals that have been selfed for ngen generations, single 
 }
 \description{
 self_pop -------------------------------------------------------
- Self a Pop object
+Self a Pop object
 }

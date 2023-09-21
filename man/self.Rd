@@ -3,7 +3,7 @@
 \name{self}
 \alias{self}
 \title{self -------------------------------------------------------
- Self an Indv object}
+Self an Indv object}
 \usage{
 self(p1, c, ngen, g_map)
 }
@@ -21,5 +21,5 @@ An Indv object that has been selfed for ngen generations
 }
 \description{
 self -------------------------------------------------------
- Self an Indv object
+Self an Indv object
 }

@@ -12,8 +12,8 @@
 }
 \description{
 The chromosome class contains information on
- chromosome breakpoints and donors for
- for one individual chromosome.
+chromosome breakpoints and donors for
+for one individual chromosome.
 }
 \section{Slots}{
 

@@ -4,8 +4,14 @@
 \alias{indv_init}
 \title{Intialize an Indv object}
 \usage{
-indv_init(chr, map, h1_donors = c("A"), h1_breakpoints = NULL,
-  h2_donors = c("A"), h2_breakpoints = NULL)
+indv_init(
+  chr,
+  map,
+  h1_donors = c("A"),
+  h1_breakpoints = NULL,
+  h2_donors = c("A"),
+  h2_breakpoints = NULL
+)
 }
 \arguments{
 \item{chr}{Number of chromosome to initialize (int); default is 10}

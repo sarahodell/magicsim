@@ -4,8 +4,7 @@
 \alias{pop_init}
 \title{Intialize a Pop object}
 \usage{
-pop_init(n = 4, chroms, donors = c("A", "B", "C", "D"), g_map,
-  poptype = NULL)
+pop_init(n = 4, chroms, donors = c("A", "B", "C", "D"), g_map, poptype = NULL)
 }
 \arguments{
 \item{n}{Number of individuals to initialize (int)

@@ -3,7 +3,7 @@
 \name{remove_unseen}
 \alias{remove_unseen}
 \title{remove_unseen -------------------------------------------------------
- remove invisible crossovers from Chrom object}
+remove invisible crossovers from Chrom object}
 \usage{
 remove_unseen(chr)
 }
@@ -15,5 +15,5 @@ A Chrom object that has had invisible crossovers removed
 }
 \description{
 remove_unseen -------------------------------------------------------
- remove invisible crossovers from Chrom object
+remove invisible crossovers from Chrom object
 }
